@@ -1,7 +1,7 @@
 name: Carl-Johan
 title: Placeholder title
 summary: Placeholder summary for Carl-Johan. Replace with a short paragraph about background and focus.
-avatar: ./avatar.svg
+avatar: ./avatar.jpeg
 accent: "#5fb88a"
 stats:
   - { value: "0+", label: Years experience }

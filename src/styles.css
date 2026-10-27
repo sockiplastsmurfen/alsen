@@ -48,3 +48,5 @@
  a{color:inherit}
  footer{border:0}
 }
+
+.hero-small .hero-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) saturate(1.1);transform:scale(1.2);opacity:.45}.hero-small .hero-portrait{position:absolute;top:max(6rem,12vh);left:50%;transform:translateX(-50%);width:min(60vw,280px);height:min(60vw,280px);object-fit:cover;border-radius:50%;box-shadow:0 20px 60px rgba(0,0,0,.5)}
