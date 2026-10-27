@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 const base = import.meta.env.BASE_URL;
 ---
 <Base title="Not found">
-  <nav id="nav"><a href={base} class="nav-logo">CV</a><div class="theme-toggle-wrapper"><button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-checked="true" aria-label="Dark mode"></button></div></nav>
+  <nav id="nav"><a href={base} class="nav-logo">CV</a><div class="theme-toggle-wrapper"><button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-label="Dark mode"></button></div></nav>
   <main class="plain-page">
     <section><div class="section-label">404</div><p class="about-text">Page not found. <a href={base}>All CVs</a></p></section>
   </main>
