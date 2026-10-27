@@ -5,6 +5,11 @@ email: thomas.alsen@happiness.se
 summary: Placeholder summary. Replace this with a short paragraph about who you are and what you work on.
 avatar: ./avatar.svg
 accent: "#2f6fed"
+stats:
+  - { value: "5+", label: Years experience }
+  - { value: "2", label: Roles }
+earlier:
+  - { title: Placeholder role, meta: "2012–2015 · Sweden" }
 links:
   - { label: GitHub, url: "https://github.com/sockiplastsmurfen" }
 skills:
