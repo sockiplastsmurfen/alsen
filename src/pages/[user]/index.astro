@@ -38,7 +38,7 @@ const initials = profile.name.split(/\s+/).map((w) => w[0]).join('').slice(0, 3)
       {profile.speaking.length > 0 && <li><a href="#speaking">Speaking</a></li>}
       {profile.projects.length > 0 && <li><a href="#opensource">Open Source</a></li>}
       {edu.length > 0 && <li><a href="#education">Education</a></li>}
-      <li><a href="#contact">Contact</a></li>
+      {(profile.email || profile.links.length > 0) && <li><a href="#contact">Contact</a></li>}
       <li><a href={base}>All CVs</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -148,7 +148,7 @@ const initials = profile.name.split(/\s+/).map((w) => w[0]).join('').slice(0, 3)
     </section>
   )}
 
-  <section class="contact" id="contact">
+  {(profile.email || profile.links.length > 0) && <section class="contact" id="contact">
     <div class="reveal">
       <div class="contact-heading">Let's talk.</div>
       {profile.email && <p class="contact-sub"><a href={`mailto:${profile.email}`}>{profile.email}</a></p>}
@@ -158,7 +158,7 @@ const initials = profile.name.split(/\s+/).map((w) => w[0]).join('').slice(0, 3)
         </div>
       )}
     </div>
-  </section>
+  </section>}
 
   <footer><p>© {new Date().getFullYear()} {profile.name}{profile.location && `. ${profile.location}`}.</p></footer>
 </Base>
