@@ -15,4 +15,4 @@ skills:
 speaking:
   - { title: Placeholder talk, event: Example Meetup, year: 2024 }
 projects:
-  - { name: cv, description: This multi-user CV site., url: "https://github.com/sockiplastsmurfen/cv" }
+  - { name: alsen, description: This multi-user CV site., url: "https://github.com/sockiplastsmurfen/alsen" }
