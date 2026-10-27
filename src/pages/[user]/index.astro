@@ -28,6 +28,8 @@ const { profile, exp, edu } = Astro.props;
 const base = import.meta.env.BASE_URL;
 // Low-resolution photos look blurry and crop faces when stretched full-width, so they get a framed portrait instead.
 const small = !!profile.avatar && profile.avatar.width < 300;
+// Mid-resolution portraits are fine full-bleed on narrow screens but blurry and face-cropped on desktop, so there they get a framed portrait too.
+const framed = !small && !!profile.avatar && profile.avatar.width < 1200;
 const initials = profile.name.split(/\s+/).map((w) => w[0]).join('').slice(0, 3).toUpperCase();
 ---
 <Base title={`${profile.name} – CV`} description={profile.summary} accent={profile.accent}>
@@ -48,14 +50,17 @@ const initials = profile.name.split(/\s+/).map((w) => w[0]).join('').slice(0, 3)
   </nav>
 
   <section class="hero" id="hero">
-    <div class={`hero-image-wrap${small ? ' hero-small' : ''}`}>
+    <div class={`hero-image-wrap${small ? ' hero-small' : ''}${framed ? ' hero-framed' : ''}`} style={framed ? `--ar:${profile.avatar.width}/${profile.avatar.height}` : undefined}>
       {profile.avatar && small
         ? <>
             <Image class="hero-backdrop" src={profile.avatar} alt="" width={200} loading="eager" aria-hidden="true" />
             <Image class="hero-portrait" src={profile.avatar} alt={profile.name} width={profile.avatar.width} height={profile.avatar.height} loading="eager" />
           </>
         : profile.avatar
-        ? <Image src={profile.avatar} alt={profile.name} width={1600} height={1600} loading="eager" style="width:100%;height:100%;object-fit:cover;object-position:center 8%" />
+        ? <>
+            {framed && <Image class="hero-backdrop" src={profile.avatar} alt="" width={200} loading="eager" aria-hidden="true" />}
+            <Image class="hero-main" src={profile.avatar} alt={profile.name} width={1600} height={1600} loading="eager" style="width:100%;height:100%;object-fit:cover;object-position:center 8%" />
+          </>
         : <div class="hero-fallback"></div>}
     </div>
     <div class="hero-content">
