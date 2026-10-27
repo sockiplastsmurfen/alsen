@@ -1,0 +1,72 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Timeline from '../../components/Timeline.astro';
+
+export async function getStaticPaths() {
+  const profiles = await getCollection('profiles');
+  const [experience, education] = await Promise.all([getCollection('experience'), getCollection('education')]);
+  const byUser = <T extends { id: string }>(all: T[], user: string) => all.filter((e) => e.id.startsWith(`${user}/`));
+  const newest = (a: { data: { start: Date } }, b: { data: { start: Date } }) => b.data.start.getTime() - a.data.start.getTime();
+  const known = new Set(profiles.map((p) => p.id.split('/')[0]));
+  for (const e of [...experience, ...education]) {
+    const user = e.id.split('/')[0];
+    if (!known.has(user)) { known.add(user); console.warn(`[cv] content/${user}/ has no profile.yml; no page generated`); }
+  }
+  return Promise.all(
+    profiles.map(async (p) => {
+      const user = p.id.split('/')[0];
+      const prep = async (e: any, org: string) => ({ ...e.data, org, Content: (await render(e)).Content });
+      const exp = await Promise.all(byUser(experience, user).sort(newest).map((e) => prep(e, e.data.company)));
+      const edu = await Promise.all(byUser(education, user).sort(newest).map((e) => prep(e, e.data.school)));
+      return { params: { user }, props: { profile: p.data, exp, edu } };
+    }),
+  );
+}
+const { profile, exp, edu } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<Base title={`${profile.name} – CV`} description={profile.summary} accent={profile.accent}>
+  <main class="wrap">
+    <nav class="back"><a href={base}>← All CVs</a></nav>
+    <header class="hero">
+      {profile.avatar && <Image src={profile.avatar} alt={profile.name} width={160} height={160} class="avatar" />}
+      <div>
+        <h1>{profile.name}</h1>
+        <p class="lead">{profile.title}{profile.location && ` · ${profile.location}`}</p>
+        <ul class="links">
+          {profile.email && <li><a href={`mailto:${profile.email}`}>{profile.email}</a></li>}
+          {profile.links.map((l) => <li><a href={l.url}>{l.label}</a></li>)}
+        </ul>
+      </div>
+    </header>
+
+    <section id="about"><h2>About</h2><p>{profile.summary}</p></section>
+
+    {exp.length > 0 && <section id="experience"><h2>Experience</h2><Timeline items={exp} /></section>}
+    {edu.length > 0 && <section id="education"><h2>Education</h2><Timeline items={edu} /></section>}
+
+    {profile.skills.length > 0 && (
+      <section id="skills"><h2>Skills</h2>
+        {profile.skills.map((g) => (
+          <div class="skill"><h3>{g.name}</h3><ul class="tags">{g.items.map((i) => <li>{i}</li>)}</ul></div>
+        ))}
+      </section>
+    )}
+    {profile.speaking.length > 0 && (
+      <section id="speaking"><h2>Speaking</h2>
+        <ul class="plain">{profile.speaking.map((s) => (
+          <li>{s.year} — {s.url ? <a href={s.url}>{s.title}</a> : s.title}, {s.event}</li>
+        ))}</ul>
+      </section>
+    )}
+    {profile.projects.length > 0 && (
+      <section id="projects"><h2>Open source</h2>
+        <ul class="plain">{profile.projects.map((p) => (
+          <li>{p.url ? <a href={p.url}>{p.name}</a> : <strong>{p.name}</strong>} — {p.description}</li>
+        ))}</ul>
+      </section>
+    )}
+  </main>
+</Base>

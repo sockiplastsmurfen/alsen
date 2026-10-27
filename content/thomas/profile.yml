@@ -1,0 +1,18 @@
+name: Thomas Alsén
+title: Developer
+location: Sweden
+email: thomas.alsen@happiness.se
+summary: Placeholder summary. Replace this with a short paragraph about who you are and what you work on.
+avatar: ./avatar.svg
+accent: "#2f6fed"
+links:
+  - { label: GitHub, url: "https://github.com/sockiplastsmurfen" }
+skills:
+  - name: Languages
+    items: [TypeScript, PHP, Python]
+  - name: Web
+    items: [Drupal, Astro, CSS]
+speaking:
+  - { title: Placeholder talk, event: Example Meetup, year: 2024 }
+projects:
+  - { name: cv, description: This multi-user CV site., url: "https://github.com/sockiplastsmurfen/cv" }

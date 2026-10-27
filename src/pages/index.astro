@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+const profiles = (await getCollection('profiles')).sort((a, b) => a.id.localeCompare(b.id));
+const base = import.meta.env.BASE_URL;
+---
+<Base title="CVs" description="CVs">
+  <main class="wrap">
+    <h1>CVs</h1>
+    <ul class="people">
+      {profiles.map((p) => {
+        const user = p.id.split('/')[0];
+        return (
+          <li>
+            <a href={`${base}${user}/`}>
+              {p.data.avatar && <Image src={p.data.avatar} alt="" width={96} height={96} class="avatar" />}
+              <strong>{p.data.name}</strong>
+              <span>{p.data.title}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </main>
+</Base>
