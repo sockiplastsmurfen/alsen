@@ -1,7 +1,7 @@
 name: Alexander
 title: Placeholder title
 summary: Placeholder summary for Alexander. Replace with a short paragraph about background and focus.
-avatar: ./avatar.svg
+avatar: ./avatar.png
 accent: "#4f8fe0"
 stats:
   - { value: "0+", label: Years experience }
