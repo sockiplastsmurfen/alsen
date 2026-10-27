@@ -9,6 +9,11 @@ export async function getStaticPaths() {
   const [experience, education] = await Promise.all([getCollection('experience'), getCollection('education')]);
   const byUser = <T extends { id: string }>(all: T[], user: string) => all.filter((e) => e.id.startsWith(`${user}/`));
   const newest = (a: { data: { start: Date } }, b: { data: { start: Date } }) => b.data.start.getTime() - a.data.start.getTime();
+  const known = new Set(profiles.map((p) => p.id.split('/')[0]));
+  for (const e of [...experience, ...education]) {
+    const user = e.id.split('/')[0];
+    if (!known.has(user)) { known.add(user); console.warn(`[cv] content/${user}/ has no profile.yml; no page generated`); }
+  }
   return Promise.all(
     profiles.map(async (p) => {
       const user = p.id.split('/')[0];

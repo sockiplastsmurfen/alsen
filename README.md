@@ -4,7 +4,7 @@ A multi-user CV site built with [Astro](https://astro.build). Every folder under
 
 ## Add a user
 
-1. Create `content/<username>/` (the folder name becomes the URL).
+1. Create `content/<username>/` (use a lowercase name without spaces; it becomes the URL, `/<username>/`).
 2. Add `profile.yml` (required) — copy `content/alexis/profile.yml` and edit. Fields: `name`, `title`, `summary` (required); `location`, `email`, `avatar`, `accent` (hex colour), `links`, `skills`, `speaking`, `projects` (optional).
 3. Add `avatar.jpg`/`.png`/`.svg` next to it and point `avatar:` at it.
 4. Add entries as Markdown files:
@@ -12,7 +12,7 @@ A multi-user CV site built with [Astro](https://astro.build). Every folder under
    - `education/xyz.md` — frontmatter `title`, `school`, `start`, optional `stop`.
    Images used in entries live in the user's folder and are referenced relatively (`image: ../photo.jpg`).
 
-Everything except `profile.yml` is optional. Invalid files fail the build with a message naming the file.
+Everything except `profile.yml` is optional. Invalid frontmatter/fields fail the build with a message naming the file; a missing image fails with the image path. A folder without `profile.yml` is skipped with a build warning.
 
 ## Upload files
 
