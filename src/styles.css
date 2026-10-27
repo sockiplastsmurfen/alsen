@@ -50,3 +50,6 @@
 }
 
 .hero-small .hero-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) saturate(1.1);transform:scale(1.2);opacity:.45}.hero-small .hero-portrait{position:absolute;top:max(6rem,12vh);left:50%;transform:translateX(-50%);width:min(60vw,280px);height:min(60vw,280px);object-fit:cover;border-radius:50%;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+
+.hero-framed .hero-backdrop{display:none}
+@media (min-width:769px){.hero-framed .hero-backdrop{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(max(40px,4vw)) saturate(1.1);transform:scale(1.2);opacity:.45}.hero-framed:after{z-index:0}.hero-framed .hero-main{z-index:1;position:absolute;top:max(5.5rem,10vh);left:50%;transform:translateX(-50%);width:auto;width:auto!important;height:clamp(280px,calc(100vh - 23rem),560px)!important;aspect-ratio:var(--ar);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.5)}}
