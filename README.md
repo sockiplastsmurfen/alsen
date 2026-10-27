@@ -1,6 +1,6 @@
 # alsen
 
-A multi-user CV site built with [Astro](https://astro.build). Every folder under `content/` becomes a CV page at `/<folder>/` (e.g. `/thomas/`, `/alexis/`); `/` lists everyone. Static build, deployed to GitHub Pages by GitHub Actions.
+A multi-user CV site built with [Astro](https://astro.build). Every folder under `content/` becomes a CV page at `/<folder>/` (e.g. `/thomas/`, `/alexis/`, `/alexander/`); `/` lists everyone. Static build, deployed to GitHub Pages by GitHub Actions.
 
 ## Add a user
 

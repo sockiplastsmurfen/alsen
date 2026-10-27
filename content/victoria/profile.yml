@@ -1,0 +1,10 @@
+name: Victoria
+title: Placeholder title
+summary: Placeholder summary for Victoria. Replace with a short paragraph about background and focus.
+avatar: ./avatar.svg
+accent: "#a77be0"
+stats:
+  - { value: "0+", label: Years experience }
+skills:
+  - name: Skills
+    items: [Placeholder, Example]
