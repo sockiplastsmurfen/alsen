@@ -3,7 +3,7 @@ title: Developer
 location: Sweden
 email: thomas.alsen@happiness.se
 summary: Placeholder summary. Replace this with a short paragraph about who you are and what you work on.
-avatar: ./avatar.svg
+avatar: ./avatar.png
 accent: "#2f6fed"
 stats:
   - { value: "5+", label: Years experience }
