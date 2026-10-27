@@ -6,7 +6,9 @@ const profiles = (await getCollection('profiles')).sort((a, b) => a.id.localeCom
 const base = import.meta.env.BASE_URL;
 ---
 <Base title="CVs" description="CVs">
-  <nav id="nav"><a href={base} class="nav-logo">CV</a></nav>
+  <nav id="nav"><a href={base} class="nav-logo">CV</a>
+    <div class="theme-toggle-wrapper"><button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-label="Dark mode"></button></div>
+  </nav>
   <main class="plain-page">
     <section>
       <div class="section-label">People</div>

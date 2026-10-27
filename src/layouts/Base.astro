@@ -8,10 +8,18 @@ const { title, description = '', accent } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script is:inline>
+      (function () {
+        var d = document.documentElement, t = null;
+        d.classList.add('js');
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        d.setAttribute('data-theme', t);
+      })();
+    </script>
   </head>
   <body>
     <slot />
@@ -28,6 +36,25 @@ const { title, description = '', accent } = Astro.props;
         if (toggle && links) {
           toggle.addEventListener('click', function () { links.classList.toggle('open'); });
           links.addEventListener('click', function (e) { if (e.target.tagName === 'A') links.classList.remove('open'); });
+        }
+        var sw = document.getElementById('themeToggle');
+        if (sw) {
+          var root = document.documentElement;
+          var mq = window.matchMedia('(prefers-color-scheme: light)');
+          var sync = function () { sw.setAttribute('aria-checked', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false'); };
+          sync();
+          sw.addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+            sync();
+          });
+          var follow = function (e) {
+            var saved = null;
+            try { saved = localStorage.getItem('theme'); } catch (err) {}
+            if (!saved) { root.setAttribute('data-theme', e.matches ? 'light' : 'dark'); sync(); }
+          };
+          if (mq.addEventListener) mq.addEventListener('change', follow);
         }
         var els = document.querySelectorAll('.reveal');
         if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('visible'); }); return; }
