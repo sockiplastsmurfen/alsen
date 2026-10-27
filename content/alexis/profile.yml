@@ -5,6 +5,8 @@ email: alexis@example.com
 summary: Placeholder summary for Alexis. Replace with a short paragraph about background and focus.
 avatar: ./avatar.svg
 accent: "#e0567a"
+stats:
+  - { value: "8+", label: Years experience }
 links:
   - { label: LinkedIn, url: "https://www.linkedin.com/" }
 skills:

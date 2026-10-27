@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <Base title="Not found">
-  <main class="wrap"><h1>404</h1><p>Page not found. <a href={import.meta.env.BASE_URL}>All CVs</a></p></main>
+  <nav id="nav"><a href={base} class="nav-logo">CV</a></nav>
+  <main class="plain-page">
+    <section><div class="section-label">404</div><p class="about-text">Page not found. <a href={base}>All CVs</a></p></section>
+  </main>
 </Base>

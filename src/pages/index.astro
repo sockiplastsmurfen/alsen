@@ -6,21 +6,25 @@ const profiles = (await getCollection('profiles')).sort((a, b) => a.id.localeCom
 const base = import.meta.env.BASE_URL;
 ---
 <Base title="CVs" description="CVs">
-  <main class="wrap">
-    <h1>CVs</h1>
-    <ul class="people">
-      {profiles.map((p) => {
-        const user = p.id.split('/')[0];
-        return (
-          <li>
-            <a href={`${base}${user}/`}>
-              {p.data.avatar && <Image src={p.data.avatar} alt="" width={96} height={96} class="avatar" />}
-              <strong>{p.data.name}</strong>
-              <span>{p.data.title}</span>
-            </a>
-          </li>
-        );
-      })}
-    </ul>
+  <nav id="nav"><a href={base} class="nav-logo">CV</a></nav>
+  <main class="plain-page">
+    <section>
+      <div class="section-label">People</div>
+      <ul class="people">
+        {profiles.map((p) => {
+          const user = p.id.split('/')[0];
+          return (
+            <li>
+              <a class="person" href={`${base}${user}/`}>
+                {p.data.avatar && <Image src={p.data.avatar} alt="" width={72} height={72} />}
+                <strong>{p.data.name}</strong>
+                <span>{p.data.title}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   </main>
+  <footer><p>CV site</p></footer>
 </Base>

@@ -5,7 +5,7 @@ A multi-user CV site built with [Astro](https://astro.build). Every folder under
 ## Add a user
 
 1. Create `content/<username>/` (use a lowercase name without spaces; it becomes the URL, `/<username>/`).
-2. Add `profile.yml` (required) — copy `content/alexis/profile.yml` and edit. Fields: `name`, `title`, `summary` (required); `location`, `email`, `avatar`, `accent` (hex colour), `links`, `skills`, `speaking`, `projects` (optional).
+2. Add `profile.yml` (required) — copy `content/alexis/profile.yml` and edit. Fields: `name`, `title`, `summary` (required); `location`, `email`, `avatar`, `accent` (hex colour, default `#D4A574`), `stats` (`{value, label}` figures shown under About), `links`, `skills` (grouped tags under Expertise), `earlier` (`{title, meta}` short older roles shown under Experience), `speaking`, `projects` (optional). The avatar is used as the full-width hero image (portrait or square works best).
 3. Add `avatar.jpg`/`.png`/`.svg` next to it and point `avatar:` at it.
 4. Add entries as Markdown files:
    - `experience/2020-01-company.md` — frontmatter `title`, `company`, `start`, optional `stop` (omit = present), `link`, `location`, `tags`, `image`; the body is the description.
@@ -13,6 +13,10 @@ A multi-user CV site built with [Astro](https://astro.build). Every folder under
    Images used in entries live in the user's folder and are referenced relatively (`image: ../photo.jpg`).
 
 Everything except `profile.yml` is optional. Invalid frontmatter/fields fail the build with a message naming the file; a missing image fails with the image path. A folder without `profile.yml` is skipped with a build warning.
+
+## Design
+
+The page layout (dark theme, Syne + DM Sans fonts, fixed nav, hero, section labels, timeline, cards, print styles) follows timbrandin.com. Sections with no content are omitted; section anchors are `#about`, `#expertise`, `#experience`, `#speaking`, `#opensource`, `#education`, `#contact`. Fonts are self-hosted in `src/fonts/`.
 
 ## Upload files
 

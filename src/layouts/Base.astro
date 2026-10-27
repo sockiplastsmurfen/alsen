@@ -8,8 +8,34 @@ const { title, description = '', accent } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
-  <body><slot /></body>
+  <body>
+    <slot />
+    <script is:inline>
+      (function () {
+        var nav = document.getElementById('nav');
+        var links = document.getElementById('navLinks');
+        var toggle = document.getElementById('navToggle');
+        if (nav) {
+          var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 60); };
+          window.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        }
+        if (toggle && links) {
+          toggle.addEventListener('click', function () { links.classList.toggle('open'); });
+          links.addEventListener('click', function (e) { if (e.target.tagName === 'A') links.classList.remove('open'); });
+        }
+        var els = document.querySelectorAll('.reveal');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('visible'); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+        }, { threshold: 0.1 });
+        els.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
+  </body>
 </html>
