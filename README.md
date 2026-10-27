@@ -5,7 +5,7 @@ A multi-user CV site built with [Astro](https://astro.build). Every folder under
 ## Add a user
 
 1. Create `content/<username>/` (use a lowercase name without spaces; it becomes the URL, `/<username>/`).
-2. Add `profile.yml` (required) — copy `content/alexis/profile.yml` and edit. Fields: `name`, `title`, `summary` (required); `location`, `email`, `avatar`, `accent` (hex colour, default `#D4A574`), `stats` (`{value, label}` figures shown under About), `links`, `skills` (grouped tags under Expertise), `earlier` (`{title, meta}` short older roles shown under Experience), `speaking`, `projects` (optional). The avatar is used as the full-width hero image (portrait or square works best); images narrower than 800px are shown as a framed round portrait over a blurred backdrop instead.
+2. Add `profile.yml` (required) — copy `content/alexis/profile.yml` and edit. Fields: `name`, `title`, `summary` (required); `location`, `email`, `avatar`, `accent` (hex colour, default `#D4A574`), `stats` (`{value, label}` figures shown under About), `links`, `skills` (grouped tags under Expertise), `earlier` (`{title, meta}` short older roles shown under Experience), `speaking`, `projects` (optional). The avatar is used as the full-width hero image (portrait or square works best); images narrower than 300px are shown as a framed round portrait over a blurred backdrop instead.
 3. Add `avatar.jpg`/`.png`/`.svg` next to it and point `avatar:` at it.
 4. Add entries as Markdown files:
    - `experience/2020-01-company.md` — frontmatter `title`, `company`, `start`, optional `stop` (omit = present), `link`, `location`, `tags`, `image`; the body is the description.
