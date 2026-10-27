@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+interface Item { title: string; org: string; link?: string; start: Date; stop?: Date; location?: string; tags?: string[]; image?: ImageMetadata; Content: any }
+interface Props { items: Item[] }
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+<ol class="timeline">
+  {Astro.props.items.map(({ Content, ...i }) => (
+    <li>
+      <div class="when">{fmt(i.start)} – {i.stop ? fmt(i.stop) : 'Present'}</div>
+      <h3>{i.title}</h3>
+      <div class="org">
+        {i.link ? <a href={i.link}>{i.org}</a> : i.org}{i.location && ` · ${i.location}`}
+      </div>
+      {i.image && <Image src={i.image} alt="" width={480} class="entry-img" />}
+      <div class="body"><Content /></div>
+      {i.tags && i.tags.length > 0 && <ul class="tags">{i.tags.map((t) => <li>{t}</li>)}</ul>}
+    </li>
+  ))}
+</ol>
