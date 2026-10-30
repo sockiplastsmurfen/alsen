@@ -1,23 +1,34 @@
 name: Thomas Alsén
-title: Developer
-location: Sweden
+title: Webbutvecklare
+location: Sverige
 email: thomas.alsen@happiness.se
-summary: Placeholder summary. Replace this with a short paragraph about who you are and what you work on.
+summary: Webbutvecklare med inriktning på Drupal och Moodle – framförallt backend (PHP och SQL) men även en hel del frontend. Har ett brinnande intresse för utveckling och teknik samt en stor hunger på att ständigt vidareutvecklas.
 avatar: ./avatar.png
-accent: "#2f6fed"
+accent: "#e0a23c"
 stats:
-  - { value: "5+", label: Years experience }
-  - { value: "2", label: Roles }
+  - { value: "2010", label: Utvecklare sedan }
+  - { value: "2012", label: På Happiness sedan }
+  - { value: "20", label: Drupal- och Moodle-sajter }
+  - { value: "3", label: Egna Moodle-moduler }
 earlier:
-  - { title: Placeholder role, meta: "2012–2015 · Sweden" }
+  - { title: Barchef/Servitör, meta: "2000–2009 · Diverse krogar, Stockholm & Oslo" }
+  - { title: Ställföreträdande stationschef, meta: "1998–1999 · Shell Detaljist AB, Lidingö" }
 links:
   - { label: GitHub, url: "https://github.com/sockiplastsmurfen" }
 skills:
-  - name: Languages
-    items: [TypeScript, PHP, Python]
-  - name: Web
-    items: [Drupal, Astro, CSS]
-speaking:
-  - { title: Placeholder talk, event: Example Meetup, year: 2024 }
+  - name: CMS & plattformar
+    items: [Drupal, Moodle, CMS, SEO]
+  - name: Backend
+    items: [PHP, MySQL, MVC, REST, SOAP, XML]
+  - name: Frontend
+    items: [HTML5, HTML/XHTML, CSS3, LESS, SASS, SCSS, JavaScript, Ajax, jQuery]
+  - name: Drift & verktyg
+    items: [Linux, Apache, IIS, HTTP, Git, LaTeX, UML, Scrum]
+  - name: Språk
+    items: ["Engelska – tal och formell skrift", "Tyska – enklare konversation"]
 projects:
+  - { name: Back To Top (Drupal), description: Patch till Drupal-modulen back_to_top., url: "https://drupal.org/project/back_to_top" }
+  - { name: Reflection Assignment Type (Moodle), description: Egen Moodle-modul., url: "https://docs.moodle.org/24/en/Reflection_Assignment_Type" }
+  - { name: Mailsimulator Assignment Type (Moodle), description: Egen Moodle-modul., url: "https://docs.moodle.org/20/en/Mailsimulator_Assignment_Type" }
+  - { name: moodle-mod_labelcollapsed, description: Egen Moodle-modul., url: "https://github.com/dsv-su/moodle-mod_labelcollapsed" }
   - { name: alsen, description: This multi-user CV site., url: "https://github.com/sockiplastsmurfen/alsen" }

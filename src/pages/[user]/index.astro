@@ -152,7 +152,7 @@ const initials = profile.name.split(/\s+/).map((w) => w[0]).join('').slice(0, 3)
             <div class="edu-card">
               <div class="edu-degree">{e.title}</div>
               <div class="edu-school">{e.org}</div>
-              <div class="edu-years">{e.stop ? `${e.start.getUTCFullYear()} – ${e.stop.getUTCFullYear()}` : `${e.start.getUTCFullYear()} – Present`}</div>
+              <div class="edu-years">{!e.stop ? `${e.start.getUTCFullYear()} – Present` : e.start.getUTCFullYear() === e.stop.getUTCFullYear() ? `${e.start.getUTCFullYear()}` : `${e.start.getUTCFullYear()} – ${e.stop.getUTCFullYear()}`}</div>
               <div class="edu-thesis"><Content /></div>
             </div>
           ))}
